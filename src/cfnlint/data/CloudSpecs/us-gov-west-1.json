@@ -53919,7 +53919,10 @@
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpcendpoint.html#cfn-ec2-vpcendpoint-vpcendpointtype",
           "PrimitiveType": "String",
           "Required": false,
-          "UpdateType": "Immutable"
+          "UpdateType": "Immutable",
+          "Value": {
+            "ValueType": "AWS::EC2::VPCEndpoint.VpcEndpointType"
+          }
         },
         "VpcId": {
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpcendpoint.html#cfn-ec2-vpcendpoint-vpcid",
@@ -73647,6 +73650,13 @@
         ]
       }
     },
+    "AWS::EC2::VPCEndpoint.VpcEndpointType": {
+      "AllowedValues": [
+        "Interface",
+        "Gateway",
+        "GatewayLoadBalancer"
+      ]
+    },
     "AWS::ECR::Repository.EncryptionConfiguration.EncryptionType": {
       "AllowedValues": [
         "AES256",
@@ -77363,6 +77373,12 @@
         "Linux with SQL Server Standard",
         "Linux with SQL Server Web",
         "Linux/UNIX",
+        "RHEL with HA",
+        "RHEL with HA and SQL Server Enterprise",
+        "RHEL with HA and SQL Server Standard",
+        "RHEL with SQL Server Enterprise",
+        "RHEL with SQL Server Standard",
+        "RHEL with SQL Server Web",
         "Red Hat Enterprise Linux",
         "SUSE Linux",
         "Windows",
@@ -77719,6 +77735,7 @@
         "g4dn.8xlarge",
         "g4dn.metal",
         "g4dn.xlarge",
+        "hpc6a.48xlarge",
         "hs1.8xlarge",
         "i2.2xlarge",
         "i2.4xlarge",

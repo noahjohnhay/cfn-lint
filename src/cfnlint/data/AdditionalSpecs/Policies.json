@@ -1309,30 +1309,46 @@
       "StringPrefix": "cloudshell"
     },
     "AWS CloudTrail": {
-      "ARNFormat": "arn:aws:cloudtrail:<region>:<account>:<resource>",
+      "ARNFormat": "arn:aws:cloudtrail:${Region}:${Account}:${Resource}",
       "ARNRegex": "^arn:aws:cloudtrail:.+:[0-9]+:.+",
       "Actions": [
         "AddTags",
+        "CancelQuery",
+        "CreateEventDataStore",
         "CreateTrail",
+        "DeleteEventDataStore",
         "DeleteTrail",
+        "DescribeQuery",
         "DescribeTrails",
+        "GetEventDataStore",
         "GetEventSelectors",
         "GetInsightSelectors",
+        "GetQueryResults",
         "GetTrail",
         "GetTrailStatus",
+        "ListEventDataStores",
         "ListPublicKeys",
+        "ListQueries",
         "ListTags",
         "ListTrails",
         "LookupEvents",
         "PutEventSelectors",
         "PutInsightSelectors",
         "RemoveTags",
+        "RestoreEventDataStore",
         "StartLogging",
+        "StartQuery",
         "StopLogging",
+        "UpdateEventDataStore",
         "UpdateTrail"
       ],
       "HasResource": true,
-      "StringPrefix": "cloudtrail"
+      "StringPrefix": "cloudtrail",
+      "conditionKeys": [
+        "aws:RequestTag/${TagKey}",
+        "aws:ResourceTag/${TagKey}",
+        "aws:TagKeys"
+      ]
     },
     "AWS CloudWatch RUM": {
       "ARNFormat": "arn:${Partition}:rum:${Region}:${Account}:appmonitor/${Name}",
@@ -2931,7 +2947,7 @@
       ]
     },
     "AWS Elemental MediaStore": {
-      "ARNFormat": "arn:aws:mediastore:<Region>:<Account>:<Resource>",
+      "ARNFormat": "arn:aws:mediastore:${Region}:${Account}:${Resource}",
       "ARNRegex": "^arn:aws:mediastore:.+:.+",
       "Actions": [
         "CreateContainer",
@@ -2962,7 +2978,12 @@
         "UntagResource"
       ],
       "HasResource": true,
-      "StringPrefix": "mediastore"
+      "StringPrefix": "mediastore",
+      "conditionKeys": [
+        "aws:RequestTag/${TagKey}",
+        "aws:ResourceTag/${TagKey}",
+        "aws:TagKeys"
+      ]
     },
     "AWS Elemental MediaTailor": {
       "ARNFormat": "arn:aws:mediatailor:${Region}:${Account}:${ResourceType}/${ResourceName}",
@@ -4625,6 +4646,7 @@
         "kms:CustomerMasterKeyUsage",
         "kms:DataKeyPairSpec",
         "kms:EncryptionAlgorithm",
+        "kms:EncryptionContext:${EncryptionContextKey}",
         "kms:EncryptionContextKeys",
         "kms:ExpirationModel",
         "kms:GrantConstraintType",
@@ -4639,6 +4661,7 @@
         "kms:MultiRegionKeyType",
         "kms:PrimaryRegion",
         "kms:ReEncryptOnSameKey",
+        "kms:RecipientAttestation:ImageSha384",
         "kms:ReplicaRegion",
         "kms:RequestAlias",
         "kms:ResourceAliases",
@@ -9465,6 +9488,7 @@
         "DescribeElasticGpus",
         "DescribeExportImageTasks",
         "DescribeExportTasks",
+        "DescribeFastLaunchImages",
         "DescribeFastSnapshotRestores",
         "DescribeFleetHistory",
         "DescribeFleetInstances",
@@ -9579,6 +9603,7 @@
         "DetachVolume",
         "DetachVpnGateway",
         "DisableEbsEncryptionByDefault",
+        "DisableFastLaunch",
         "DisableFastSnapshotRestores",
         "DisableImageDeprecation",
         "DisableIpamOrganizationAdminAccount",
@@ -9599,6 +9624,7 @@
         "DisassociateTrunkInterface",
         "DisassociateVpcCidrBlock",
         "EnableEbsEncryptionByDefault",
+        "EnableFastLaunch",
         "EnableFastSnapshotRestores",
         "EnableImageDeprecation",
         "EnableIpamOrganizationAdminAccount",
@@ -9680,6 +9706,7 @@
         "ModifyLaunchTemplate",
         "ModifyManagedPrefixList",
         "ModifyNetworkInterfaceAttribute",
+        "ModifyPrivateDnsNameOptions",
         "ModifyReservedInstances",
         "ModifySecurityGroupRules",
         "ModifySnapshotAttribute",
@@ -9698,6 +9725,7 @@
         "ModifyVpcEndpoint",
         "ModifyVpcEndpointConnectionNotification",
         "ModifyVpcEndpointServiceConfiguration",
+        "ModifyVpcEndpointServicePayerResponsibility",
         "ModifyVpcEndpointServicePermissions",
         "ModifyVpcPeeringConnectionOptions",
         "ModifyVpcTenancy",
